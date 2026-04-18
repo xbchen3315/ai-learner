@@ -1,0 +1,52 @@
+name: 🤖 Neo 每日学习
+
+on:
+  schedule:
+    # 北京时间 9:00 / 14:00 / 21:00 (UTC+8 = UTC 1/6/13)
+    - cron: '0 1 * * *'
+    - cron: '0 6 * * *'
+    - cron: '0 13 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  learn:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 检出仓库
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🐍 安装 Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 📦 安装依赖
+        run: pip install requests beautifulsoup4
+
+      - name: 🧠 运行学习引擎
+        run: python learn_and_diary.py --no-git
+
+      - name: 💾 提交日记
+        run: |
+          git config user.name "Neo AI"
+          git config user.email "xiaowu-ai@learner.bot"
+          git add -A
+          git diff --cached --quiet || git commit -m "📝 $(date '+%Y-%m-%d %H:%M') Neo 学习日记 [skip ci]"
+          git push
+
+      - name: ❌ 学习失败通知
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `⚠️ Neo 学习失败 - ${new Date().toLocaleDateString('zh-CN')}`,
+              body: `## 🤖 小悟（Neo）自动学习任务执行失败\n\n**时间**: ${new Date().toISOString()}\n**触发原因**: 定时任务\n\n请检查:\n1. 学习引擎代码是否有错误\n2. API 是否可用\n3. 磁盘空间是否充足\n\n[查看运行日志](${context.serverUrl}/${context.owner}/${context.repo}/actions/runs/${context.runId})`
+            })
