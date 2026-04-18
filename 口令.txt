@@ -1,0 +1,5 @@
+小悟迁移口令（复制下面整段发给AI助手即可）：
+
+---
+帮我把GitHub上的AI学习项目"小悟"迁移到云服务器。仓库地址：github.com/你的用户名/ai-learner。操作：1)先git clone把仓库下载下来；2)读里面的MIGRATION.md文件，里面有完整迁移步骤；3)读personality.md了解性格设定，读learning_topics.json了解学习方向；4)按MIGRATION.md的步骤部署。注意：所有最新配置都在仓库文件里，以文件内容为准。
+---

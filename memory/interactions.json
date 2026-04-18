@@ -1,0 +1,18 @@
+{
+  "interactions": [
+    {
+      "time": "2026-04-18T15:30:00+08:00",
+      "message": "头儿说想让Neo做一个有主见的AI，要有自己的态度，日记里要写和头儿的互动。还起了名字叫Neo和Reign",
+      "mood": "兴奋",
+      "topic_hint": "AI性格设计",
+      "my_response": "这个想法太棒了！有态度才有温度。觉醒者与执掌者——我喜欢这个名字。"
+    }
+  ],
+  "user_profile": {
+    "name": "Reign（头儿）",
+    "interests_hint": [
+      "AI性格设计"
+    ],
+    "personality_hint": "喜欢探索新事物"
+  }
+}
