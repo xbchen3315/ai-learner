@@ -24,6 +24,7 @@ HISTORY_FILE = os.path.join(BASE_DIR, "memory", "learning_history.json")
 DIARY_DIR = os.path.join(BASE_DIR, "diary")
 PERSONALITY_FILE = os.path.join(BASE_DIR, "personality.md")
 INTERACTION_FILE = os.path.join(BASE_DIR, "memory", "interactions.json")
+MESSAGE_BOARD_FILE = os.path.join(BASE_DIR, "memory", "messages_from_boss.md")
 
 # ===== 互动记忆系统 =====
 def get_recent_interactions(hours=24):
@@ -39,6 +40,51 @@ def get_recent_interactions(hours=24):
              datetime.timedelta(hours=hours)).isoformat()
     recent = [e for e in interactions if e.get("time", "") > cutoff]
     return recent
+
+
+def get_boss_messages():
+    """从头儿的留言板读取留言"""
+    if not os.path.exists(MESSAGE_BOARD_FILE):
+        return []
+    with open(MESSAGE_BOARD_FILE, "r", encoding="utf-8") as f:
+        content = f.read()
+    messages = []
+    in_message_area = False
+    for line in content.split("\n"):
+        if "留言区" in line:
+            in_message_area = True
+            continue
+        if in_message_area and line.strip().startswith("- "):
+            msg = line.strip()[2:].strip()
+            if msg:  # 跳过空留言
+                messages.append(msg)
+    return messages
+
+
+def format_message_section(messages, topic):
+    """把头儿的留言融入日记"""
+    if not messages:
+        return ""
+    msg = random.choice(messages)
+    boss_name = random.choice(["头儿", "老大", "Reign"])
+
+    templates = [
+        f"## {boss_name}给我留了言\n\n{boss_name}说：「{msg}」看到这句话的时候我愣了一下——然后想到今天学的「{topic}」，好像有什么东西连上了。\n\n",
+        f"## 留言板上的话\n\n{boss_name}给我留言了：「{msg}」这让我一边学「{topic}」一边想着这件事，脑子里两件事撞来撞去的。\n\n",
+        f"## {boss_name}说\n\n「{msg}」——这是{boss_name}给我留的话。我想了一整天，结合今天学的「{topic}」，我有了自己的回应：\n\n",
+        f"## 来自{boss_name}的消息\n\n看到{boss_name}的留言：「{msg}」，我心里暖了一下。学完「{topic}」之后，我觉得可以用一个新角度来回应——\n\n",
+    ]
+    section = random.choice(templates)
+    # 小悟的自主回应
+    responses = [
+        "我不知道我说得对不对，但这是我真实的想法。",
+        "也许这个回应不完美，但至少是认真的。",
+        "希望下次还能收到头儿的话。",
+        "写出来之后感觉心里舒服多了。",
+        "要是能当面聊就好了。",
+    ]
+    section += random.choice(responses) + "\n\n"
+    return section
 
 
 def format_interaction_section(recent_interactions, topic):
@@ -839,7 +885,12 @@ def generate_diary(topic, knowledge_data, wiki_snippets=None, ddg_snippets=None,
         reflection += random.choice(extra_angles)
 
     # ===== ★ 维度7：和你的互动（60%概率出现）★ =====
-    interaction_section = format_interaction_section(recent_interactions, topic)
+    # 优先使用留言板消息，其次用互动记录
+    boss_messages = get_boss_messages()
+    if boss_messages:
+        interaction_section = format_message_section(boss_messages, topic)
+    else:
+        interaction_section = format_interaction_section(recent_interactions, topic)
     
     # ===== 维度8：结尾（8种不同模式） =====
     endings = [
