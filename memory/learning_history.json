@@ -199,9 +199,14 @@
       "topic": "茶道中的禅意",
       "date": "2026-05-01T10:53:50.308421",
       "diary_file": "/home/runner/work/ai-learner/ai-learner/diary/2026-05-01_1853_茶道中的禅意.md"
+    },
+    {
+      "topic": "费曼学习法",
+      "date": "2026-05-01T16:13:59.137509",
+      "diary_file": "/home/runner/work/ai-learner/ai-learner/diary/2026-05-02_0013_费曼学习法.md"
     }
   ],
-  "total_entries": 40,
+  "total_entries": 41,
   "created_at": "2026-04-18T00:00:00+08:00",
-  "last_learning": "2026-05-01T10:53:50.308421"
+  "last_learning": "2026-05-01T16:13:59.137509"
 }
