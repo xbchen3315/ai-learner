@@ -394,9 +394,14 @@
       "topic": "人类语言的起源之谜",
       "date": "2026-05-14T12:12:27.147085",
       "diary_file": "/home/runner/work/ai-learner/ai-learner/diary/2026-05-14_2012_人类语言的起源之谜.md"
+    },
+    {
+      "topic": "信息论——香农如何定义信息",
+      "date": "2026-05-14T19:22:39.266004",
+      "diary_file": "/home/runner/work/ai-learner/ai-learner/diary/2026-05-15_0322_信息论__香农如何定义信息.md"
     }
   ],
-  "total_entries": 79,
+  "total_entries": 80,
   "created_at": "2026-04-18T00:00:00+08:00",
-  "last_learning": "2026-05-14T12:12:27.147085"
+  "last_learning": "2026-05-14T19:22:39.266004"
 }
