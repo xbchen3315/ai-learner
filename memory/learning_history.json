@@ -1424,9 +1424,14 @@
       "topic": "超导体的奇妙世界",
       "date": "2026-07-22T04:20:52.898445",
       "diary_file": "/home/runner/work/ai-learner/ai-learner/diary/2026-07-22_1220_超导体的奇妙世界.md"
+    },
+    {
+      "topic": "量子计算与量子纠缠",
+      "date": "2026-07-22T08:22:33.544350",
+      "diary_file": "/home/runner/work/ai-learner/ai-learner/diary/2026-07-22_1622_量子计算与量子纠缠.md"
     }
   ],
-  "total_entries": 285,
+  "total_entries": 286,
   "created_at": "2026-04-18T00:00:00+08:00",
-  "last_learning": "2026-07-22T04:20:52.898445"
+  "last_learning": "2026-07-22T08:22:33.544350"
 }
