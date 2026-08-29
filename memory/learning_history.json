@@ -1999,9 +1999,14 @@
       "topic": "深海生物的生存智慧",
       "date": "2026-08-29T12:13:48.519616",
       "diary_file": "/home/runner/work/ai-learner/ai-learner/diary/2026-08-29_2013_深海生物的生存智慧.md"
+    },
+    {
+      "topic": "密码学的前世今生",
+      "date": "2026-08-29T16:56:11.659337",
+      "diary_file": "/home/runner/work/ai-learner/ai-learner/diary/2026-08-30_0056_密码学的前世今生.md"
     }
   ],
-  "total_entries": 400,
+  "total_entries": 401,
   "created_at": "2026-04-18T00:00:00+08:00",
-  "last_learning": "2026-08-29T12:13:48.519616"
+  "last_learning": "2026-08-29T16:56:11.659337"
 }
